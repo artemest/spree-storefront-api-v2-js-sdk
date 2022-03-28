@@ -69,20 +69,20 @@ export default class Http {
   }
 
   protected processError(error: Error): SpreeSDKError {
-    if (error instanceof FetchError) {
-      if (error.response) {
-        // Error from Spree outside HTTP 2xx codes
-        return this.processSpreeError(error)
-      }
-
-      if (error.request) {
-        // No response received from Spree
-        return new NoResponseError()
-      }
-
-      // Incorrect request setup
-      return new MisconfigurationError(error.message)
+    //if (error instanceof FetchError) {
+    if ((error as FetchError).response) {
+      // Error from Spree outside HTTP 2xx codes
+      return this.processSpreeError(error)
     }
+
+    if ((error as FetchError).request) {
+      // No response received from Spree
+      return new NoResponseError()
+    }
+
+    // Incorrect request setup
+    // return new MisconfigurationError(error.message)
+    //}
 
     return new SpreeSDKError(error.message)
   }
