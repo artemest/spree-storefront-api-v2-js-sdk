@@ -101,7 +101,9 @@ export default class Http {
   }
 
   protected spreeOrderHeaders(tokens: IToken): { [headerName: string]: string } {
-    const header = {}
+    const header = {
+      'x-forwarded-host': 'artemest-sdk-fetch'
+    }
 
     if (tokens.orderToken) {
       header['X-Spree-Order-Token'] = tokens.orderToken
