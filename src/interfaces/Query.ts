@@ -11,6 +11,7 @@ export interface IQuery {
   per_page?: number
   sort?: string
   [customSpreeExtensionKey: string]: any
+  locale?: string
 }
 
 /**
