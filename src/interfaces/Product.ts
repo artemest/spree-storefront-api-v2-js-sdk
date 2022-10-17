@@ -25,6 +25,9 @@ export interface ProductAttr extends JsonApiDocument {
     display_price: string
     compare_at_price: string | null
     display_compare_at_price: string | null
+    localized_slugs: {
+      [key: string]: string
+    }
   }
   relationships: IRelationships
 }
@@ -50,5 +53,5 @@ export type ListOptions = WithCommonOptions<
 
 export type ShowOptions = WithCommonOptions<
   { suggestToken: true; suggestQuery: true; optionalToken: true },
-  { id: string; image_transformation?: ImageTransformation }
+  { id: string; image_transformation?: ImageTransformation, locale?: string }
 >
